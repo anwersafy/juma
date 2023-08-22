@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "682483977927",
+    "project_id": "joumaafinal",
+    "storage_bucket": "joumaafinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682483977927:android:ecf07a6125169ad399b8e2",
+        "android_client_info": {
+          "package_name": "com.jomaaadmin.jomaa_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682483977927-3krrtnkel8aoq4dfb82blpnuv9djkqsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU1dN77kyI_VvDezrXjjs-NkQD40U300A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682483977927-3krrtnkel8aoq4dfb82blpnuv9djkqsa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "682483977927-2nhui63tdqgho7efn4i56e6c52u1trdu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jumaaapp.jumaa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682483977927:android:4783bde783280eb099b8e2",
+        "android_client_info": {
+          "package_name": "com.jumaaapp.jumaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682483977927-3krrtnkel8aoq4dfb82blpnuv9djkqsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU1dN77kyI_VvDezrXjjs-NkQD40U300A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682483977927-3krrtnkel8aoq4dfb82blpnuv9djkqsa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "682483977927-2nhui63tdqgho7efn4i56e6c52u1trdu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jumaaapp.jumaa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
