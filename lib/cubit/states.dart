@@ -201,3 +201,14 @@ class GetImageFromFirebaseStorageErrorState extends AppStates{}
 class SetEqamaState extends AppStates{}
 class SetAzanNotificationState extends AppStates{}
 class CancelEqamaState extends AppStates{}
+class SetDailyQuranNotificationState extends AppStates{}
+class SetEqamaNotificationState extends AppStates{}
+class SetPrayOnProphetNotificationState extends AppStates{}
+class SetApproachingPrayersNotificationState extends AppStates{}
+class SetMorningEveningNotificationState extends AppStates{}
+class SetDuhaPrayerNotificationState extends AppStates{}
+class SetNightPrayerNotificationState extends AppStates{}
+class SetJoumaaHourNotificationState extends AppStates{}
+class SetSurahElkahfNotificationState extends AppStates{}
+class SetMondayThursdayNotificationState extends AppStates{}
+class SetDoaaLastJoumaaHourNotificationState extends AppStates{}

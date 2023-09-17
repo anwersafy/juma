@@ -470,10 +470,10 @@ class S {
     );
   }
 
-  /// `Radio Holy Quran`
+  /// `Listening to the Quran`
   String get Radio_Holy_Quran {
     return Intl.message(
-      'Radio Holy Quran',
+      'Listening to the Quran',
       name: 'Radio_Holy_Quran',
       desc: '',
       args: [],

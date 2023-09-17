@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Prayer_Timings":
             MessageLookupByLibrary.simpleMessage("Prayer Timings"),
         "Radio_Holy_Quran":
-            MessageLookupByLibrary.simpleMessage("Radio Holy Quran"),
+            MessageLookupByLibrary.simpleMessage("Listening to the Quran"),
         "Remembering_the_morning_and_evening_remembrances":
             MessageLookupByLibrary.simpleMessage(
                 "Remembering the morning and evening remembrances"),

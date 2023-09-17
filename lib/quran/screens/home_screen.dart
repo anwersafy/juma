@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../providers/show_overlay_provider.dart';
+import '../quran/quran.dart';
 import '../widgets/quran_page.dart';
 import 'package:provider/provider.dart';
 
@@ -31,8 +32,7 @@ class HomeScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: overlay.toggleisShowOverlay,
         child: Scaffold(
-          backgroundColor:
-              Colors.white,
+          backgroundColor: Colors.white,
           body: Center(
             child: Stack(
               alignment: Alignment.center,
@@ -40,16 +40,21 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   decoration: isLandscape && size.width > 500
                       ? BoxDecoration(
-                          border: Border.symmetric(
-                            vertical: BorderSide(
-                              color: colorScheme.infoText,
-                              width: 2,
-                            ),
-                          ),
-                          color: colorScheme.scaffold,
-                        )
+                    border: Border.symmetric(
+                      vertical: BorderSide(
+                        color: colorScheme.infoText,
+                        width: 2,
+                      ),
+                    ),
+                    color: colorScheme.scaffold,
+                  )
                       : null,
-                  constraints: const BoxConstraints(maxWidth: 500),
+                  padding: !isLandscape
+                      ? EdgeInsets.all(5)
+                      : null,
+                  constraints: const BoxConstraints(
+                      maxHeight: double.infinity,
+                      maxWidth: double.infinity-5),
                   child: CarouselSlider.builder(
                     carouselController: quran.carouselController,
                     options: CarouselOptions(
@@ -65,19 +70,21 @@ class HomeScreen extends StatelessWidget {
                     itemBuilder: (_, pageIndex, __) {
                       return isLandscape || isKeyboardOpen
                           ? ListView(
-                              children: [
-                                const SimplePageInfo(),
-                                QuranPage(pageIndex: pageIndex),
-                              ],
-                            )
-                          : Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const SimplePageInfo(),
-                                QuranPage(pageIndex: pageIndex),
-                                const PageNumber(),
-                              ],
-                            );
+                        children: [
+                          const SimplePageInfo(),
+
+                          QuranPage(pageIndex: pageIndex,),
+                        ],
+                      )
+                          : QuranPage(pageIndex: pageIndex);
+                      //  : Column(
+                      //      mainAxisAlignment: MainAxisAlignment.center,
+                      //      children: [
+                      //       //  SimplePageInfo(),
+                      //         QuranPage(pageIndex: pageIndex,),
+                      //       //  PageNumber(),
+                      //      ],
+                      //    );
                     },
                   ),
                 ),

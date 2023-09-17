@@ -29,7 +29,7 @@ class IndexScreen extends StatelessWidget {
     );
 
     void _goToBookMark() {
-      quran.goToPage(bookMark.markPage);
+      quran.goToPage(bookMark.markPage-1);
       overlay.toggleisShowOverlay();
       Navigator.pop(context);
     }

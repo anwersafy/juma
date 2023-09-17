@@ -153,3 +153,20 @@ String nightHadithDocAr='night_hadith_ar';
 String nightHadithCollectionEn='night_hadith_en';
 String nightHadithDocEn='night_hadith_en';
 
+
+
+// keys
+
+String surahElKahfKey='surahElkahf';
+String joumaaHoursKey='joumaaHours';
+String doaaLastHourKey='doaaLastHour';
+String prayOnProphetKey='prayOnProphet';
+String duhaPrayerKey='duhaPrayer';
+String mondayThursdayKey='mondayThursday';
+String eqamaKey='eqama';
+String nightPrayerKey='nightPrayer';
+String dailyQuranKey='dailyQuran';
+String morningEveningKey='morningEvening';
+String approachingPrayersKey='approachingPrayers';
+
+

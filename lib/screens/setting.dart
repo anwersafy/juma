@@ -45,7 +45,6 @@ class Setting extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: MediaQuery.of(context).textScaleFactor * 22,
-                              fontFamily: 'Cairo',
                               fontWeight: FontWeight.w700,
                             ),
                           )
@@ -66,9 +65,9 @@ class Setting extends StatelessWidget {
                                 S.of(context).For_who_is_the_reward_for_this_application,
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: MediaQuery.of(context).textScaleFactor * 16,
-                                  fontFamily: 'Cairo',
+                                  fontSize: MediaQuery.of(context).textScaleFactor * 13,
                                   fontWeight: FontWeight.w600,
+
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -130,7 +129,6 @@ class Setting extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 15,
-                          fontFamily: 'Cairo',
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -149,7 +147,6 @@ class Setting extends StatelessWidget {
                             child: Text(value,style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
-                              fontFamily: 'Cairo',
                               fontWeight: FontWeight.w600,
                             ),),
                           );
@@ -192,7 +189,6 @@ class Setting extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 14,
-                            fontFamily: 'Cairo',
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -246,8 +242,7 @@ class Setting extends StatelessWidget {
                           S.of(context).Terms_and_Conditions_and_Privacy_Policy,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize:14,
-                            fontFamily: 'Cairo',
+                            fontSize:13,
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -306,7 +301,6 @@ class Setting extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF87CBB9),
                             fontSize: MediaQuery.of(context).textScaleFactor * 16,
-                            fontFamily: 'Cairo',
                             fontWeight: FontWeight.w700,
                           ),
                         ),

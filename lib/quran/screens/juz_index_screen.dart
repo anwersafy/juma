@@ -31,7 +31,8 @@ class JuzIndexScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppConstant.ajzaa),
+
+        title:  Text(AppConstant.ajzaa),
         actions: [
           TextButton.icon(
             onPressed: _goToBookMark,

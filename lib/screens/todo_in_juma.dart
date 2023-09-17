@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:jumaa/component/string_manager.dart';
@@ -27,68 +28,67 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
         // turnOnAllNotification();
         AppCubit().getAllFromFirebase();
       } else {
-        AppCubit().scaffoldKey.currentState!..showSnackBar(
-          SnackBar(
-            content: Text(
-                S.of(context).noInternet
+        AppCubit().scaffoldKey.currentState!
+          ..showSnackBar(
+            SnackBar(
+              content: Text(S.of(context).noInternet),
+              backgroundColor: Color(0xFF57A7A2),
             ),
-
-            backgroundColor:  Color(0xFF57A7A2),
-          ),
-        );
+          );
       }
 
       super.initState();
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit,AppStates>(
-      listener: (context,state){},
-      builder: (context,state) {
-        var cubit = AppCubit.get(context);
-        var box=GetStorage();
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
+    return BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = AppCubit.get(context);
+          var box = GetStorage();
+          return Scaffold(
+            body: SingleChildScrollView(
+                child: Column(
               children: [
                 Container(
                   padding: EdgeInsets.all(10),
                   child: ListView(
                     children: [
-                 //   Text(
-                 //     'خير يوم طلعت عليه الشمس',
-                 //     style: TextStyle(
-                 //       color: Colors.black,
-                 //       fontSize: 16,
-                 //       fontFamily: 'Cairo',
-                 //       fontWeight: FontWeight.w700,
-                 //     ),
-                 //   ),
+                      //   Text(
+                      //     'خير يوم طلعت عليه الشمس',
+                      //     style: TextStyle(
+                      //       color: Colors.black,
+                      //       fontSize: 16,
+                      //       fontWeight: FontWeight.w700,
+                      //     ),
+                      //   ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: Center(
-                          child: Text(
-                            cubit.isArabic()? box.read(jumaaSuinnCollectiionAr1)??'':box.read(jumaaSuinnCollectiionEn1)??'',
+                          child: SingleChildScrollView(
+                              child: Text(
+                            cubit.isArabic()
+                                ? box.read(jumaaSuinnCollectiionAr1) ?? ''
+                                : box.read(jumaaSuinnCollectiionEn1) ?? '',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18,
-                              //fontFamily: 'Cairo',
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w700,
                             ),
-                          ),
+                          )),
                         ),
                       )
-
                     ],
                   ),
                   margin: const EdgeInsets.only(top: 30, left: 8, right: 8),
                   width: double.infinity,
-                  height:250,
+                  height: 250.h,
                   decoration: ShapeDecoration(
                     image: DecorationImage(
                       image: AssetImage('images/img_rectangle77.png'),
@@ -108,19 +108,17 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                   ),
                 ),
                 Container(
-
                   child: SingleChildScrollView(
                     child: SizedBox(
                       child: Center(
                         child: Text(
-                          cubit.isArabic()? box.read(jumaaSuinnCollectiionAr2)??'':box.read(jumaaSuinnCollectiionEn2)??'',
-
+                          cubit.isArabic()
+                              ? box.read(jumaaSuinnCollectiionAr2) ?? ''
+                              : box.read(jumaaSuinnCollectiionEn2) ?? '',
                           textAlign: TextAlign.center,
-
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
-                            //fontFamily: 'Cairo',
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -129,7 +127,7 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                   ),
                   margin: const EdgeInsets.only(top: 30, left: 8, right: 8),
                   width: double.infinity,
-                  height: 250,
+                  height: 250.h,
                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   decoration: ShapeDecoration(
                     image: DecorationImage(
@@ -150,19 +148,17 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                   ),
                 ),
                 Container(
-
                   child: SingleChildScrollView(
                     child: SizedBox(
                       child: Center(
                         child: Text(
-                          cubit.isArabic()? box.read(jumaaSuinnCollectiionAr3)??'':box.read(jumaaSuinnCollectiionEn3)??'',
-
+                          cubit.isArabic()
+                              ? box.read(jumaaSuinnCollectiionAr3) ?? ''
+                              : box.read(jumaaSuinnCollectiionEn3) ?? '',
                           textAlign: TextAlign.center,
-
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
-                           // fontFamily: 'Cairo',
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -171,7 +167,7 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                   ),
                   margin: const EdgeInsets.only(top: 30, left: 8, right: 8),
                   width: double.infinity,
-                  height: 250,
+                  height: 250.h,
                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   decoration: ShapeDecoration(
                     image: DecorationImage(
@@ -199,7 +195,6 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                 //      //  style: TextStyle(
                 //      //    color: Colors.black,
                 //      //    fontSize: 16,
-                //      //    fontFamily: 'Cairo',
                 //      //    fontWeight: FontWeight.w700,
                 //      //  ),
                 //      //),
@@ -216,7 +211,6 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                 //             style: TextStyle(
                 //               color: Colors.black,
                 //               fontSize: 14,
-                //               fontFamily: 'Cairo',
                 //               fontWeight: FontWeight.w400,
                 //             ),
                 //           ),
@@ -246,13 +240,9 @@ class _ToDoInJumaState extends State<ToDoInJuma> {
                 //     ],
                 //   ),
                 // ),
-
-
               ],
-            )
-          ),
-        );
-      }
-    );
+            )),
+          );
+        });
   }
 }

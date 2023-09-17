@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: '>=2.19.2<4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -66,7 +66,7 @@ dependencies:
   arabic_numbers: ^1.0.0
   lottie: ^2.3.2
   radio_player: ^1.4.1
-  flutter_local_notifications: ^15.1.0+1
+  flutter_local_notifications: ^15.1.1
   badges: ^3.1.1
   flutter_timezone: ^1.0.7
 
@@ -92,11 +92,12 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   cached_network_image: ^3.2.3
   whatsapp_share: ^2.0.1
-  sizer: ^2.0.15
+  #sizer: ^2.0.15
   syncfusion_flutter_pdfviewer: ^21.2.3
   provider: ^6.0.5
   # awesome_notifications: ^0.6.19
   carousel_slider: ^4.2.1
+  flutter_screenutil: any
 
 dev_dependencies:
   flutter_test:
@@ -141,10 +142,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - assets/pdf/
-    - assets/quran/
-    - assets/quran-images/
     - assets/icons/
+    - assets/quran-images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

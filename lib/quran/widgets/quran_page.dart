@@ -10,12 +10,14 @@ class QuranPage extends StatelessWidget {
 
   final int pageIndex;
 
+
+
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeProvider>(context);
     return InvertColor(
       isInvert: theme.isDarkMode,
-      child: Image.asset(pageDir(pageIndex + 1)),
+      child:Image.asset(pageDir(pageIndex + 1), fit: BoxFit.fill),
     );
   }
 }

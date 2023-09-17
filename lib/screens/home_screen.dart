@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,7 +14,6 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:sizer/sizer.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import '../component/string_manager.dart';
 import '../cubit/cubit.dart';
@@ -28,34 +28,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-
-    InternetConnectionChecker().hasConnection.then((value) {
-      if (value == true) {
-        // AppCubit(). getCurrentPosition(context);
-        // AppCubit(). azanNotification();
-        // turnOnAllNotification();
-        AppCubit().getAllFromFirebase();
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              S.of(context).noInternet,
-            ),
-            backgroundColor: Color(0xFF57A7A2),
-          ),
-        );
-      }
-    });
 
 
 
 
-    super.initState();
 
-  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
@@ -91,7 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  ImageSlideshow(height: 350, children:
+                  ImageSlideshow(
+                      autoPlayInterval: 5000,
+                      isLoop: true,
+
+                      height: 350.h, children:
                   cubit.isArabic()?
                   List.generate(imagesAr.length+1, (index) {
                     if (index==0)
@@ -141,29 +123,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Spacer(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        onPressed: ()async {
-                                          final urlImage =
-                                          cubit.isArabic()?
-                                          box.read('imageAr'):box.read('imageEn')??
-                                              'https://rwad360.com/wp-content/uploads/2020/01/34499484_1390368081108035_2740735424623280128_n.jpg';
-                                          final url = Uri.parse(urlImage);
-                                          final response = await get(url);
-                                          final bytes = response.bodyBytes;
-                                          final temp = await getTemporaryDirectory();
-                                          final path = '${temp.path}/image.jpg';
-
-                                          File(path).writeAsBytesSync(bytes);
-                                          await Share.shareFiles([path]);
-
-                                        },
-                                        icon: SvgPicture.asset(
-                                            'images/img_share.svg')),
-                                  ],
-                                )
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.end,
+                                //   children: [
+                                //     IconButton(
+                                //         onPressed: ()async {
+                                //           final urlImage =
+                                //           cubit.isArabic()?
+                                //           box.read('imageAr'):box.read('imageEn')??
+                                //               'https://rwad360.com/wp-content/uploads/2020/01/34499484_1390368081108035_2740735424623280128_n.jpg';
+                                //           final url = Uri.parse(urlImage);
+                                //           final response = await get(url);
+                                //           final bytes = response.bodyBytes;
+                                //           final temp = await getTemporaryDirectory();
+                                //           final path = '${temp.path}/image.jpg';
+                                //
+                                //           File(path).writeAsBytesSync(bytes);
+                                //           await Share.shareFiles([path]);
+                                //
+                                //         },
+                                //         icon: SvgPicture.asset(
+                                //             'images/img_share.svg')),
+                                //   ],
+                                // )
                               ],
                             ),
                           ),
@@ -182,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child:Stack(
                                 alignment: AlignmentDirectional.bottomEnd,
                                 children:[
-                                  Center(child: Image.network(imagesAr[index-1],fit: BoxFit.contain,),),
+                                  Center(child: Image.network(imagesAr[index-1],fit: BoxFit.cover,width: double.infinity,height: double.infinity,),),
 
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -209,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
 
                         ),
-                      );;
+                      );
                   })
                       :
                   List.generate(imagesEn.length+1, (index) {
@@ -217,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return  Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: Container(
-                          height: 550,
+                          height: 550.h,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage('images/img_rectangle1.png'),
@@ -238,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       S.of(context).Application,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 24,
+                                        fontSize: 24.sp,
                                         fontFamily: 'Cairo',
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -252,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       S.of(context).Jummah,
                                       style: TextStyle(
                                         color: Color(0xFF569DAA),
-                                        fontSize: 28,
+                                        fontSize: 28.sp,
                                         fontFamily: 'Cairo',
                                         fontWeight: FontWeight.w800,
                                       ),
@@ -260,29 +242,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Spacer(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        onPressed: ()async {
-                                          final urlImage =
-                                          cubit.isArabic()?
-                                          box.read('imageAr'):box.read('imageEn')??
-                                              'https://rwad360.com/wp-content/uploads/2020/01/34499484_1390368081108035_2740735424623280128_n.jpg';
-                                          final url = Uri.parse(urlImage);
-                                          final response = await get(url);
-                                          final bytes = response.bodyBytes;
-                                          final temp = await getTemporaryDirectory();
-                                          final path = '${temp.path}/image.jpg';
-
-                                          File(path).writeAsBytesSync(bytes);
-                                          await Share.shareFiles([path]);
-
-                                        },
-                                        icon: SvgPicture.asset(
-                                            'images/img_share.svg')),
-                                  ],
-                                )
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.end,
+                                //   children: [
+                                //     IconButton(
+                                //         onPressed: ()async {
+                                //           final urlImage =
+                                //           cubit.isArabic()?
+                                //           box.read('imageAr'):box.read('imageEn')??
+                                //               'https://rwad360.com/wp-content/uploads/2020/01/34499484_1390368081108035_2740735424623280128_n.jpg';
+                                //           final url = Uri.parse(urlImage);
+                                //           final response = await get(url);
+                                //           final bytes = response.bodyBytes;
+                                //           final temp = await getTemporaryDirectory();
+                                //           final path = '${temp.path}/image.jpg';
+                                //
+                                //           File(path).writeAsBytesSync(bytes);
+                                //           await Share.shareFiles([path]);
+                                //
+                                //         },
+                                //         icon: SvgPicture.asset(
+                                //             'images/img_share.svg')),
+                                //   ],
+                                // )
                               ],
                             ),
                           ),
@@ -293,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
-                              height: 550,
+                              height: 550.h,
                               decoration: const BoxDecoration(
 
                                   color: Colors.transparent,
@@ -302,7 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child:Stack(
                                   alignment: AlignmentDirectional.bottomEnd,
                                   children:[
-                                    Image.network(imagesEn[index-1],fit: BoxFit.cover,),
+                                    Center(child: Image.network(imagesEn[index-1],fit: BoxFit.cover,width: double.infinity,height: double.infinity,)),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
@@ -342,8 +324,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           children: [
                             Container(
-                              width: 30,
-                              height: 30,
+                              width: 30.w,
+                              height: 30.h,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image:
@@ -356,8 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               S.of(context).Prayer_Timings,
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 18,
-                                fontFamily: 'Cairo',
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                               ),
                             )
@@ -367,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 20,
+                            width: 20.w,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
@@ -398,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             ),
                           ),
-                          SizedBox(width: 35,),
+                          SizedBox(width: 35.w,),
                           Text(
                             //'06 جوان 2023م',
                             '$dayOfWeek',
@@ -478,11 +459,11 @@ class prayerItem extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 13,
+            width: 13.w,
           ),
           Container(
-            width:17,
-            height: 17,
+            width:17.w,
+            height: 17.h,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
@@ -492,43 +473,43 @@ class prayerItem extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 8,
+            width: 8.w,
           ),
           Text(
             prayerName??'',
             style: TextStyle(
               color: Colors.black,
-              fontSize:14,
+              fontSize:14.sp,
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w900,
             ),
           ),
           SizedBox(
-            width:15,
+            width:15.w,
           ),
           Text(
             timePrayer??'',
             style: TextStyle(
               color: Color(0xFF87CBB9),
-              fontSize: MediaQuery.of(context).textScaleFactor*17,
+              fontSize: 17.sp,
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w700,
             ),
           ),
          SizedBox(
-           width: 20,
+           width: 20.w,
          ),
           Text(
             cubit.isArabic()?'المتبقي':'remaining',
             style: TextStyle(
               color: Colors.black,
-              fontSize: 14,
+              fontSize: 14.sp,
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w900,
             ),
           ),
           SizedBox(
-            width: 4,
+            width: 4.w,
           ),
           Spacer(),
           Container(
@@ -541,7 +522,7 @@ class prayerItem extends StatelessWidget {
                 ),
                 textStyle: TextStyle(
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).textScaleFactor*15,
+                    fontSize: 15.sp,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.bold
                 ),
@@ -552,7 +533,7 @@ class prayerItem extends StatelessWidget {
                   timePrayer??'00:00',),
               )),
           SizedBox(
-            width:12
+            width:12.w
           ),
         ],
       ),

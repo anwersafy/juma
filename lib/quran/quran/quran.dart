@@ -1,3 +1,5 @@
+import 'package:quran/quran.dart';
+
 import 'page_data.dart';
 import 'surah_data.dart';
 
@@ -66,7 +68,8 @@ String getPlaceOfRevelationByPage(page) {
 }
 
 int getSurahFirstPage(int surahNumber) {
-  return quranPages.indexWhere((page) => page.surah == surahNumber) + 1;
+  return getSurahPages(surahNumber)[0];
+  //return quranPages.indexWhere((page) => page.surah == surahNumber) + 1;
 }
 
 int getHizbQuarter({required int hizb, required int quarter}) {
@@ -91,6 +94,10 @@ int getHizbPage(int hizb) {
 
 String pageDir(int number) {
   return 'assets/quran-images/page${formattedPageNumber(number)}.png';
+}
+
+String pageDirByPage(int page) {
+  return 'assets/quran/a${page}.png';
 }
 
 String formattedPageNumber(int number) {
